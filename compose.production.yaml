@@ -1,0 +1,10 @@
+# Use with: docker compose -f compose.yaml -f compose.production.yaml up -d
+# Put your certificate and private key at ./certs/fullchain.pem and ./certs/privkey.pem.
+services:
+  nginx:
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/https.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./certs:/etc/nginx/certs:ro
